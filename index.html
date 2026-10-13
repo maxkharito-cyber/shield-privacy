@@ -33,17 +33,20 @@
 <body>
 
 <div class="container">
-  <h1>Privacy Policy for Shield</h1>
-  <div class="updated">Last updated: September 2026</div>
+  <h1>Privacy Policy for Nomikai Shield</h1>
+  <div class="updated">Last updated: October 13, 2026</div>
 
   <p><strong>Kharitonenkov Maksim</strong> ("we", "our", or "us") operates the <strong>Shield</strong> mobile application (the "Service"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service.</p>
 
   <h2>1. Information Collection and Use</h2>
-  <p>Shield is designed to prioritize user privacy. We do not require account registration, and we do not collect your personal name, physical address, or phone number. Any scenario inputs entered by users are processed in transient memory solely to produce text responses.</p>
+  <p>Nomikai Shield does not ask you to register with your name, email address, physical address, or phone number. The app creates an anonymous Supabase Auth account with a unique user ID to authenticate requests, associate purchase access, and enforce generation limits. The account is pseudonymous, not a guarantee that you cannot be identified. Access and refresh tokens are stored in the app's local storage and an access token is sent to our backend for verification.</p>
+  <p>When you request a message, we send your situation, selected language, recipient category, tone, and up to five previous generated messages for that situation to our backend and OpenAI. Do not include sensitive personal information or information about other people that is unnecessary for the request. The app also sends an Android device identifier and a request identifier to the backend. We use account-based limits, not the device identifier, as the authority for generation access.</p>
 
   <h2>2. Third-Party Services</h2>
   <p>We use trusted third-party service providers that may collect information used to identify your device or process transactions:</p>
   <ul>
+    <li><strong>Supabase:</strong> Provides anonymous authentication and the server-side database for account IDs, lifetime free-use counts, daily Pro-use counts, purchase entitlement records, and generation request status. Successful generated responses (including message text, summary and guidance) are stored with request identifiers so retries can return the same response without consuming another generation. <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Supabase Privacy Policy</a></li>
+    <li><strong>Render:</strong> Hosts our backend, which verifies your access token, checks purchases and generation limits, and calls OpenAI. Hosting infrastructure processes requests and may retain technical access logs such as IP addresses and timestamps. <a href="https://render.com/privacy" target="_blank" rel="noopener noreferrer">Render Privacy Policy</a></li>
     <li>
       <strong>Google Play Services:</strong> 
       <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>
@@ -53,20 +56,24 @@
       <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener noreferrer">AdMob Privacy Policy</a>
     </li>
     <li>
-      <strong>RevenueCat:</strong> Used for processing in-app purchases and managing subscriptions. Collects anonymous app user IDs and purchase receipt tokens. 
+      <strong>RevenueCat:</strong> Used to validate purchase receipts and manage subscription access. RevenueCat processes app user IDs, product and purchase information and receipt tokens. When account authentication is available, the Supabase user ID is also used as the RevenueCat app user ID so the backend can check the <code>pro</code> entitlement. Google Play processes payment details; we do not receive your full payment-card details. 
       <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">RevenueCat Privacy Policy</a>
     </li>
     <li>
-      <strong>AI Processing (OpenAI API):</strong> User prompt scenarios are securely transmitted to backend AI infrastructure solely to generate responses. Prompts are not used to train global AI models. 
+      <strong>AI Processing (OpenAI API):</strong> Your situation, selected settings, relevant message history and generated responses are processed by the OpenAI API to plan, generate and check messages. OpenAI states that API data is not used to train its models by default. Provider retention and abuse-monitoring rules may apply; we do not promise immediate deletion of all provider-held data. 
       <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">OpenAI Privacy Policy</a>
     </li>
   </ul>
 
   <h2>3. Log Data and Analytics</h2>
-  <p>In case of an error or crash in the app, we may collect technical diagnostics (Log Data). This may include your device model, operating system version, app settings, and timestamp of the incident. This data is used exclusively to troubleshoot stability issues.</p>
+  <p>The backend records technical information such as generation settings (language, recipient category and tone), status and error codes. Hosting and third-party SDKs may process technical request information, device information and timestamps for operation, security and troubleshooting. The current backend does not intentionally log full scenario texts or bearer tokens. This does not prevent our processors from retaining data under their own policies.</p>
 
   <h2>4. Data Retention and Deletion</h2>
-  <p>Because Shield does not require user accounts, we do not store personal account profiles on permanent servers. Transient prompt texts are discarded after generation. If you wish to delete any cached local application data, you can do so at any time by clearing the application storage in your Android device settings or by uninstalling the application. You may also contact us to request data deletion.</p>
+  <p>We retain anonymous authentication records, account usage totals, daily usage records, purchase entitlement records and generation-request records in Supabase for service operation, quota enforcement and retry handling. Successful response payloads are stored server-side; scenario input is not a dedicated field in the usage tables, but is sent to the processing services described above. The current application does not implement an automatic timed deletion schedule for these records.</p>
+  <p>Clearing Android app storage or uninstalling removes local tokens and cached application data. It does not delete Supabase, RevenueCat, Google Play or OpenAI records, cancel a subscription, or guarantee recovery of the same anonymous account. Contact <a href="mailto:maxkharito@gmail.com">maxkharito@gmail.com</a> to request access, correction or deletion, or to identify an account safely. Do not email access or refresh tokens. We may need appropriate verification and may retain records where required by applicable law, transaction obligations or security needs. Payment-provider records and retention are governed by their policies.</p>
+  <p>Service providers may process data in countries other than yours. Subject to applicable law, you may have additional privacy rights and the right to complain to a data-protection authority. Contact us to exercise your rights.</p>
+
+  <p>Purchase and service conditions, including Lifetime limitations, are described separately in our <a href="terms.html">Terms of Service</a>.</p>
 
   <h2>5. Children’s Privacy</h2>
   <p>Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13.</p>
